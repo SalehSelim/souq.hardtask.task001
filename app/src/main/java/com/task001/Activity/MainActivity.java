@@ -13,7 +13,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         CategoryFragment categoryFragment = new CategoryFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment,categoryFragment,"").commit();
+        //If you wnat to test Arabic support remove comment from this line
+        //Utilities.setPreference(this, Constants.SELECTED_LANGUAGE,Constants.ARABIC);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment,categoryFragment).addToBackStack("").commit();
     }
 }
 

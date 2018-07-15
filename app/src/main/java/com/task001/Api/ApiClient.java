@@ -1,5 +1,7 @@
 package com.task001.Api;
 
+import com.task001.Utilities.Constants;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -8,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-    public static String Base_URL = ApiConstants.BASE_URL;
+    public static String Base_URL = Constants.BASE_URL;
     public static Retrofit retrofit = null;
 
     public static Retrofit getApiClient()

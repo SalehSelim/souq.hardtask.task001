@@ -18,6 +18,8 @@ import com.task001.Fragment.CategoryFragment;
 import com.task001.Fragment.SubCategoryFragment;
 import com.task001.Model.Category;
 import com.task001.R;
+import com.task001.Utilities.Constants;
+import com.task001.Utilities.Utilities;
 
 import java.util.ArrayList;
 
@@ -43,7 +45,15 @@ public class CategoryAdapter extends RecyclerView.Adapter <CategoryAdapter.Categ
 
     @Override
     public void onBindViewHolder(final CategoryViewHolder holder, final int position) {
-        holder.cat_name.setText(categories.get(position).getTitleEN()+" ("+categories.get(position).getProductCount()+")");
+        if (Utilities.getPreference(context ,Constants.SELECTED_LANGUAGE).equals(Constants.ARABIC)) {
+
+            holder.cat_name.setText(categories.get(position).getTitleAR() + " (" + categories.get(position).getProductCount() + ")");
+        }
+        else
+        {
+            holder.cat_name.setText(categories.get(position).getTitleEN() + " (" + categories.get(position).getProductCount() + ")");
+
+        }
         if(categories.get(position).getPhoto()!=null)
         {
         Picasso.with(context)
@@ -94,7 +104,12 @@ public class CategoryAdapter extends RecyclerView.Adapter <CategoryAdapter.Categ
         TextView title = (TextView)toolbar.findViewById(R.id.bar_title);
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Regular.ttf");
         title.setTypeface(typeface);
-        title.setText(categories.get(position).getTitleEN());
+        if (Utilities.getPreference(context ,Constants.SELECTED_LANGUAGE).equals(Constants.ARABIC)) {
+            title.setText(categories.get(position).getTitleAR());
+        }
+        else {
+            title.setText(categories.get(position).getTitleEN());
+        }
         toolbar.findViewById(R.id.logo).setVisibility(View.GONE);
         toolbar.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
